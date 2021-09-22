@@ -28,22 +28,26 @@ fun main(args: Array<String>) {
                 num++
             }
         }
-        println("\nIntrodueix un numero (-1 per acabar): ")
+        print("\nIntrodueix un numero (-1 per acabar): ")
         val entrada = readLine()!!.toInt()
 
         if (f.exists()){
             if (f.isDirectory){
                 val aux = f.listFiles().sorted().get(entrada - 1)
-                for (e in f.listFiles().sorted()) {
+                num = 1
+                for (e in aux.listFiles().sorted()) {
+
                     if (e.isFile()) {
-                        println("$num .- " + e.getName() + "\t " + e.length())
+                        println("$num.- " + e.getName() + "\t " + e.length())
                         num++
                     }
                     if (e.isDirectory()) {
                         println("$num.- " + e.getName() + "\t <Directori>")
                         num++
                     }
+
                 }
+                println()
             }
         }
     } while (entrada != -1)
