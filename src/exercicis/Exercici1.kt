@@ -6,8 +6,8 @@ fun main(args: Array<String>) {
 
     var f = File.listRoots()[0]
     var listaFicheros = f.listFiles().sorted()
+    var entrada = 0
 
-    println(listaFicheros.get(10))
     do {
         val s = "Llista de fitxers i directoris del directori " + f.getCanonicalPath()
         val validez = false
@@ -18,7 +18,9 @@ fun main(args: Array<String>) {
         println("0.- Directori pare")
 
         num = 1
-        for (e in f.listFiles().sorted()) {
+        listaFicheros = f.listFiles().sorted()
+
+        for (e in listaFicheros) {
             if (e.isFile()) {
                 println("$num .- " + e.getName() + "\t " + e.length())
                 num++
@@ -29,9 +31,12 @@ fun main(args: Array<String>) {
             }
         }
         print("\nIntrodueix un numero (-1 per acabar): ")
-        val entrada = readLine()!!.toInt()
+        entrada = readLine()!!.toInt()
 
-        if (f.exists()){
+
+        val fAux = File(listaFicheros[entrada-1].path)
+        //if (fAux) //DIRECTORIO Y LECTURA contemplar el 0 y que este el numero entreb 0 y 24
+        /*if (f.exists()){
             if (f.isDirectory){
                 val aux = f.listFiles().sorted().get(entrada - 1)
                 num = 1
@@ -49,6 +54,6 @@ fun main(args: Array<String>) {
                 }
                 println()
             }
-        }
-    } while (entrada != -1)
+        }*/
+    } while (!validez)
 }
