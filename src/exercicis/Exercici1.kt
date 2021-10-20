@@ -18,29 +18,12 @@ fun main(args: Array<String>) {
         println("0.- Directori pare")
 
         num = 1
-        listaFicheros = f.listFiles().sorted()
 
-        for (e in listaFicheros) {
-            if (e.isFile()) {
-                println("$num .- " + e.getName() + "\t " + e.length())
-                num++
-            }
-            if (e.isDirectory()) {
-                println("$num.- " + e.getName() + "\t <Directori>")
-                num++
-            }
-        }
-        print("\nIntrodueix un numero (-1 per acabar): ")
-        entrada = readLine()!!.toInt()
-
-
-        val fAux = File(listaFicheros[entrada-1].path)
         //if (fAux) //DIRECTORIO Y LECTURA contemplar el 0 y que este el numero entreb 0 y 24
-        /*if (f.exists()){
+        if (f.exists()){
             if (f.isDirectory){
-                val aux = f.listFiles().sorted().get(entrada - 1)
                 num = 1
-                for (e in aux.listFiles().sorted()) {
+                for (e in f.listFiles().sorted()) {
 
                     if (e.isFile()) {
                         println("$num.- " + e.getName() + "\t " + e.length())
@@ -50,10 +33,15 @@ fun main(args: Array<String>) {
                         println("$num.- " + e.getName() + "\t <Directori>")
                         num++
                     }
-
                 }
                 println()
             }
-        }*/
+        }//val aux = f.listFiles().sorted().get(entrada - 1)
+
+        print("\nIntrodueix un numero (-1 per acabar): ")
+        entrada = readLine()!!.toInt()
+
+        f = File(listaFicheros[entrada-1].path)
+
     } while (!validez)
 }
